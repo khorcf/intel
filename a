@@ -1,0 +1,29 @@
+[33mcommit 0ec19d7e40ac743005a4170b68620fd016e95a1c[m[33m ([m[1;36mHEAD -> [m[1;32mdev[m[33m)[m
+Author: CF <cf@abc.com>
+Date:   Tue Mar 26 02:06:17 2024 +0000
+
+    added test content in dev-file1
+
+[33mcommit 11488030c95e4e1b948508aef503aac599cffe72[m
+Author: CF <cf@abc.com>
+Date:   Tue Mar 26 02:02:36 2024 +0000
+
+    added dev-file1 in dev branch for testing
+
+[33mcommit bce174a67c426cbffc485e50d21e9533eed0c1b5[m[33m ([m[1;32mmaster[m[33m)[m
+Author: CF <cf@abc.com>
+Date:   Tue Mar 26 01:31:44 2024 +0000
+
+    added content 2nd time for file1
+
+[33mcommit 87bc0a18d6ec1a88f2f420c00132424c3f1efa91[m
+Author: CF <cf@abc.com>
+Date:   Tue Mar 26 01:29:23 2024 +0000
+
+    added content for file1
+
+[33mcommit 06df8a5b9b2d31d8b37c1f2025ac6a04b0a534ab[m
+Author: CF <cf@abc.com>
+Date:   Tue Mar 26 01:25:13 2024 +0000
+
+    added file1 for testing
