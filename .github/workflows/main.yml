@@ -12,9 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: step1
-        run: echo "Hello from CF"
-      - name: step2
-        run: cat /etc/os-release 
+        run: |
+          echo "Hello from CF"
+          sleep 30
+      - name: step2 for testing
+        run: |
+          cat /etc/os-release 
+          sleep 30
     ## Name us not important in a step
       - run: uname -a
+
+      
   
