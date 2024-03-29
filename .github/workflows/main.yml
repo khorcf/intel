@@ -1,12 +1,10 @@
 #My First Workflow
 
 name: workflow1
-on: 
+on:
   push:
-    branches:
-      - main
-
-
+  workflow_dispatch:
+  
 jobs:
   job1:
     runs-on: ubuntu-latest
