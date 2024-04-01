@@ -3,7 +3,6 @@
 name: workflow1
 on:
   push:
-  pull_request:
   workflow_dispatch:
   
   
