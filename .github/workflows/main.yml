@@ -1,0 +1,28 @@
+#My First Workflow
+
+name: workflow1
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  
+  
+jobs:
+  job1:
+    runs-on: self-hosted
+    steps:
+      - name: step1
+        run: |
+          echo "Hello from CF"
+          sleep 30
+      - name: step2 for testing
+        run: |
+          cat /etc/os-release 
+          hostname
+          touch /tmp/cf
+          sleep 30
+    ## Name us not important in a step
+      - run: uname -a
+
+      
+  
