@@ -19,7 +19,7 @@ jobs:
           cat /etc/os-release 
           hostname
           touch /tmp/cf
-
+          echo "Hello2 from $name"
     ## Name us not important in a step
       - run: uname -a
 
