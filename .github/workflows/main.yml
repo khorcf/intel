@@ -12,8 +12,8 @@ jobs:
       - name: step1
         run: |
           echo "Hello from $name"
-          env:
-            name: cf
+        env:
+          name: cf
       - name: step2 for testing
         run: |
           cat /etc/os-release 
