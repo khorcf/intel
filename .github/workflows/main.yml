@@ -9,7 +9,7 @@ jobs:
   job1:
     runs-on: self-hosted
     env:
-      greeetings: "hello"
+      greetings: "hello"
     steps:
       - name: step1
         run: |
