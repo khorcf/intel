@@ -8,10 +8,12 @@ on:
 jobs:
   job1:
     runs-on: self-hosted
+    env:
+      greeetings: "hello"
     steps:
       - name: step1
         run: |
-          echo "Hello from $name"
+          echo "$greetings! from $name"
         env:
           name: cf
       - name: step2 for testing
@@ -19,7 +21,7 @@ jobs:
           cat /etc/os-release 
           hostname
           touch /tmp/cf
-          echo "Hello2 from $name"
+          echo "$greetings! from $name"
     ## Name us not important in a step
       - run: uname -a
 
