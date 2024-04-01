@@ -17,6 +17,8 @@ jobs:
       - name: step2 for testing
         run: |
           cat /etc/os-release 
+          hostname
+          touch /tmp/cf
           sleep 30
     ## Name us not important in a step
       - run: uname -a
