@@ -2,7 +2,7 @@
 
 name: workflow1
 on:
-  pull_request:
+  push:
   workflow_dispatch:
   
 jobs:
@@ -11,14 +11,15 @@ jobs:
     steps:
       - name: step1
         run: |
-          echo "Hello from CF"
-          sleep 30
+          echo "Hello from $name"
+          env:
+            name: cf
       - name: step2 for testing
         run: |
           cat /etc/os-release 
           hostname
           touch /tmp/cf
-          sleep 30
+
     ## Name us not important in a step
       - run: uname -a
 
