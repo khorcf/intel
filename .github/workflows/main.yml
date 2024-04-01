@@ -36,7 +36,7 @@ jobs:
     steps:
       - name: step1
         run: |
-          echo "$greetings! from $name $lastname."
+          echo "$greetings! from $name $lastname"
         env:
           name: cf
       - name: step2 for testing
