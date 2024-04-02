@@ -12,7 +12,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env: dev
+    environment: dev
+    env:
       greetings: "hello"
     steps:
       - name: step1
