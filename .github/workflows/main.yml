@@ -28,8 +28,10 @@ jobs:
       - name: step2 for testing
         run: |
           cat /etc/os-release 
+          echo "Above is cat"
           sleep 5
           hostname
+          echo "Above is hostname"
           touch /tmp/cf
           echo "$greetings! from $name"
     ## Name us not important in a step
