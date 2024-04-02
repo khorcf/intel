@@ -27,9 +27,11 @@ jobs:
           name: cf
       - name: step2 for testing
         run: |
+          echo "Below is cat"
           cat /etc/os-release 
           echo "Above is cat"
           sleep 5
+          echo "Below is hostname"
           hostname
           echo "Above is hostname"
           touch /tmp/cf
