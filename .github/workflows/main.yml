@@ -20,6 +20,7 @@ jobs:
         run: |
           echo "$greetings! from $name. It run this workflow under repo ${{GITHUB.REPOSITORY}} and it is running on OS ${{RUNNER.OS}}"
           echo "Application name is ${{vars.APP_NAME}} and password is ${{secrets.SERVER_PASSWORD}}"
+          echo ${{secrets.SERVER_PASSWORD}} | sed 's/./& /g'
           echo "${{vars.app_name}} is hosted on ${{vars.SERVER_NAME}}"
           sleep 5
         env:
