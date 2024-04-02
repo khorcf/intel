@@ -11,7 +11,7 @@ env:
   
 jobs:
   job1:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     env:
       greetings: "hello"
     steps:
