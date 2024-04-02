@@ -39,6 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: prod
     needs: build
+    continue-on-error: true
     env:
       greetings: "hello"
     steps:
