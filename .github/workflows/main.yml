@@ -19,7 +19,6 @@ jobs:
     
     steps:
       - name: my step1
-        
         run: |
           echo "$greetings! from $name. It run this workflow under repo ${{GITHUB.REPOSITORY}} and it is running on OS ${{RUNNER.OS}}"
           echo "Application name is ${{vars.APP_NAME}} and password is ${{secrets.SERVER_PASSWORD}}"
@@ -32,7 +31,7 @@ jobs:
       - name: my step2
         id: step2
         #if: github.event_name == 'push'
-        if: runner.os == 'Linux'
+        #if: runner.os == 'Linux'
         run: |
           echo ${{runner.os}}
           cat /etc/os-release 
