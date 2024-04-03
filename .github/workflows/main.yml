@@ -25,12 +25,12 @@ jobs:
           echo "Application name is ${{vars.APP_NAME}} and password is ${{secrets.SERVER_PASSWORD}}"
           echo The value of SERVER_PASSWORD secret variable is: ${{secrets.SERVER_PASSWORD}} | sed 's/./& /g'
           echo "${{vars.app_name}} is hosted on ${{vars.SERVER_NAME}}" 
-          aa
+          
           sleep 5
         env:
           name: cf
-      - name: step2
-        
+      - name: my step2
+        id: step2
         #if: github.event_name == 'push'
         if: runner.os == 'Linux'
         run: |
@@ -40,10 +40,10 @@ jobs:
           hostname
           touch /tmp/cf
           echo "$greetings! from $name"
-        
+          aa
       - name: debug step
         #if: runner.os != 'Linux' 
-        if: ${{failure()}}
+        if: ${{failure() && steps.step2.conclusion == 'failed'}}
         run: |
           echo ${{runner.os}}
           cat /etc/os-release 
