@@ -18,7 +18,8 @@ jobs:
       greetings: "hello"
     
     steps:
-      - name: step1
+      - name: my step1
+        
         run: |
           echo "$greetings! from $name. It run this workflow under repo ${{GITHUB.REPOSITORY}} and it is running on OS ${{RUNNER.OS}}"
           echo "Application name is ${{vars.APP_NAME}} and password is ${{secrets.SERVER_PASSWORD}}"
@@ -39,8 +40,9 @@ jobs:
           touch /tmp/cf
           echo "$greetings! from $name"
         
-      - name: step3 
-        if: runner.os != 'Linux'     
+      - name: debug step
+        #if: runner.os != 'Linux' 
+        if: ${{failure()}}
         run: |
           echo ${{runner.os}}
           cat /etc/os-release 
