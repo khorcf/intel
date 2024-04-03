@@ -4,6 +4,7 @@ name: workflow1
 on:
   push:
   workflow_dispatch:
+  pull_request:
 env:
   greetings: "Good Morning"
   name: "Chai Fong"
@@ -26,6 +27,7 @@ jobs:
         env:
           name: cf
       - name: step2 for testing
+        if: github.event_name == 'push'
         run: |
           cat /etc/os-release 
           sleep 5
