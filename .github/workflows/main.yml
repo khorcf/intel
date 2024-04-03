@@ -28,8 +28,9 @@ jobs:
         env:
           name: cf
       - name: step2
+        
         #if: github.event_name == 'push'
-        if: runner.os == 'Linux
+        if: ${{ runner.os }} == 'Linux
         run: |
           cat /etc/os-release 
           sleep 5
@@ -38,7 +39,7 @@ jobs:
           echo "$greetings! from $name"
           
       - name: step3 
-        if: runner.os != 'Linux
+        #if: runner.os != 'Linux
         run: |
           cat /etc/os-release 
           sleep 5
