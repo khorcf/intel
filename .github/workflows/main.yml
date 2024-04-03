@@ -42,7 +42,7 @@ jobs:
           aa
       - name: debug step
         #if: runner.os != 'Linux' 
-        if: ${{failure() && steps.step2.conclusion == 'failed'}}
+        if: ${{failure() && steps.step2.conclusion == 'failure'}}
         run: |
           echo ${{runner.os}}
           cat /etc/os-release 
