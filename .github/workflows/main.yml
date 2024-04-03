@@ -4,7 +4,7 @@ name: workflow1
 on:
   push:
   workflow_dispatch:
-  pull_request:
+  #pull_request:
 env:
   greetings: "Good Morning"
   name: "Chai Fong"
@@ -23,15 +23,14 @@ jobs:
           echo "$greetings! from $name. It run this workflow under repo ${{GITHUB.REPOSITORY}} and it is running on OS ${{RUNNER.OS}}"
           echo "Application name is ${{vars.APP_NAME}} and password is ${{secrets.SERVER_PASSWORD}}"
           echo The value of SERVER_PASSWORD secret variable is: ${{secrets.SERVER_PASSWORD}} | sed 's/./& /g'
-          echo "${{vars.app_name}} is hosted on ${{vars.SERVER_NAME}}"
-          echo ${{ runner.os }} 
+          echo "${{vars.app_name}} is hosted on ${{vars.SERVER_NAME}}" 
           sleep 5
         env:
           name: cf
       - name: step2
         
         #if: github.event_name == 'push'
-        if: ${{runner.os}} == Linux
+        if: runner.os == 'Linux'
         run: |
           echo ${{ runner.os}}
           cat /etc/os-release 
@@ -39,9 +38,9 @@ jobs:
           hostname
           touch /tmp/cf
           echo "$greetings! from $name"
-          
+        
       - name: step3 
-        if: ${{ runner.os}} != Linux
+        if: runner.os != 'Linux'     
         run: |
           echo ${{ runner.os}}
           cat /etc/os-release 
@@ -49,8 +48,9 @@ jobs:
           hostname
           touch /tmp/cf
           echo "$greetings! from $name"
-    ## Name us not important in a step
-      #- run: uname -a
+    
+    ## Name is not important in a step
+      - run: uname -a
       
   test:
     runs-on: ubuntu-latest
