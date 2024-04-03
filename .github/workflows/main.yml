@@ -63,7 +63,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: prod
-    needs: test
+    needs: stage
     env:
       lastname: "khor"
     steps:
