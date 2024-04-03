@@ -39,7 +39,7 @@ jobs:
           echo "$greetings! from $name"
           
       - name: step3 
-        #if: runner.os != 'Linux
+        if: ${{ runner.os }} != 'Linux
         run: |
           cat /etc/os-release 
           sleep 5
