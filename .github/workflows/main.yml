@@ -39,12 +39,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: prod
     needs: build
-    continue-on-error: true
+    #continue-on-error: true
     env:
       greetings: "hello"
     steps:
       - name: step1
-        #continue-on-error: true
+        continue-on-error: true
         run: |
           echo "$greetings! from $name. It run this workflow under repo ${{GITHUB.REPOSITORY}} and it is running on OS ${{RUNNER.OS}}"
           aa
