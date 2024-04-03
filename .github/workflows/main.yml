@@ -24,7 +24,7 @@ jobs:
           echo "Application name is ${{vars.APP_NAME}} and password is ${{secrets.SERVER_PASSWORD}}"
           echo The value of SERVER_PASSWORD secret variable is: ${{secrets.SERVER_PASSWORD}} | sed 's/./& /g'
           echo "${{vars.app_name}} is hosted on ${{vars.SERVER_NAME}}" 
-          
+          aa
           sleep 5
         env:
           name: cf
@@ -39,7 +39,7 @@ jobs:
           hostname
           touch /tmp/cf
           echo "$greetings! from $name"
-          aa
+          
       - name: debug step
         #if: runner.os != 'Linux' 
         if: ${{failure() && steps.step2.conclusion == 'failure'}}
