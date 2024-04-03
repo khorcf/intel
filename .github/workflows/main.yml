@@ -31,7 +31,7 @@ jobs:
       - name: step2
         
         #if: github.event_name == 'push'
-        if: ${{runner.os}} == "Linux"
+        if: ${{runner.os}} == Linux
         run: |
           echo ${{ runner.os}}
           cat /etc/os-release 
@@ -41,7 +41,7 @@ jobs:
           echo "$greetings! from $name"
           
       - name: step3 
-        if: ${{ runner.os}} != "Linux"
+        if: ${{ runner.os}} != Linux
         run: |
           echo ${{ runner.os}}
           cat /etc/os-release 
