@@ -47,7 +47,7 @@ jobs:
         #continue-on-error: true
         run: |
           echo "$greetings! from $name. It run this workflow under repo ${{GITHUB.REPOSITORY}} and it is running on OS ${{RUNNER.OS}}"
-          aa
+          
           sleep 5
           
   stage:
