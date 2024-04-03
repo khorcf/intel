@@ -26,7 +26,17 @@ jobs:
           sleep 5
         env:
           name: cf
-      - name: step2 for testing
+      - name: step2
+        #if: github.event_name == 'push'
+        run: |
+          cat /etc/os-release 
+          sleep 5
+          hostname
+          touch /tmp/cf
+          echo "$greetings! from $name"
+          unamestr=$(uname)
+          echo $unamestr
+      - name: step3 
         if: github.event_name == 'push'
         run: |
           cat /etc/os-release 
