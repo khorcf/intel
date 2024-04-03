@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: prod
     needs: build
-    #continue-on-error: true
+    continue-on-error: true
     env:
       greetings: "hello"
     steps:
@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: prod
     needs: test
-    continue-on-error: true
+    #continue-on-error: true
     env:
       greetings: "hello"
     steps:
