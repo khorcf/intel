@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: clone the repository
-        uses: actions/checkout@4.1.2
+        uses: actions/checkout@v4.1.2
       - name: step 2
         run: ls -l
         
