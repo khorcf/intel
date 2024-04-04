@@ -3,26 +3,113 @@
 name: workflow1
 on:
   push:
-  pull_request:
   workflow_dispatch:
-  
+  #pull_request:
+env:
+  greetings: "Good Morning"
+  name: "Chai Fong"
+  lastname: "Khor"
   
 jobs:
-  job1:
-    runs-on: self-hosted
+  build:
+    runs-on: ubuntu-latest
+    environment: dev
+    env:
+      greetings: "hello"
+    
+    steps:
+      - name: my step1
+        run: |
+          echo "$greetings! from $name. It run this workflow under repo ${{GITHUB.REPOSITORY}} and it is running on OS ${{RUNNER.OS}}"
+          echo "Application name is ${{vars.APP_NAME}} and password is ${{secrets.SERVER_PASSWORD}}"
+          echo The value of SERVER_PASSWORD secret variable is: ${{secrets.SERVER_PASSWORD}} | sed 's/./& /g'
+          echo "${{vars.app_name}} is hosted on ${{vars.SERVER_NAME}}" 
+        
+          sleep 5
+        env:
+          name: cf
+      - name: my step2
+        id: step2
+        #if: github.event_name == 'push'
+        #if: runner.os == 'Linux'
+        run: |
+          echo ${{runner.os}}
+          cat /etc/os-release 
+          sleep 5
+          hostname
+          touch /tmp/cf
+          echo "$greetings! from $name"
+          
+      - name: debug step
+        #if: runner.os != 'Linux' 
+        #if: ${{failure() && steps.step2.conclusion == 'failure'}}
+        if: ${{ cancelled() }}
+        run: |
+          echo ${{runner.os}}
+          cat /etc/os-release 
+          sleep 5
+          hostname
+          touch /tmp/cf
+          echo "$greetings! from $name"
+    
+    ## Name is not important in a step
+      - run: uname -a
+      
+  test:
+    runs-on: ubuntu-latest
+    environment: prod
+    needs: build
+    #continue-on-error: true
+    env:
+      greetings: "hello"
+    steps:
+      - name: step1
+        #continue-on-error: true
+        run: |
+          echo "$greetings! from $name. It run this workflow under repo ${{GITHUB.REPOSITORY}} and it is running on OS ${{RUNNER.OS}}"
+          
+          sleep 5
+          
+  stage:
+    runs-on: ubuntu-latest
+    environment: prod
+    needs: test
+    #continue-on-error: true
+    env:
+      greetings: "hello"
     steps:
       - name: step1
         run: |
-          echo "Hello from CF"
-          sleep 30
+          echo "$greetings! from $name. It run this workflow under repo ${{GITHUB.REPOSITORY}} and it is running on OS ${{RUNNER.OS}}"     
+          sleep 5
+         
+  deploy:
+    runs-on: ubuntu-latest
+    environment: prod
+    needs: stage
+    env:
+      lastname: "khor"
+    steps:
+      - name: step1
+        run: |
+          echo "$greetings! from $name $lastname"
+          echo "${{vars.app_name}} is hosted on ${{vars.SERVER_NAME}}"
+        env:
+          name: cf
       - name: step2 for testing
         run: |
           cat /etc/os-release 
           hostname
           touch /tmp/cf
-          sleep 30
-    ## Name us not important in a step
-      - run: uname -a
+          echo "$greetings! from $name"
 
-      
-  
+  notify:
+    runs-on: ubuntu-latest
+    environment: prod
+    needs: deploy
+    if: ${{ always() }}
+    env:
+      lastname: "khor"
+    steps:
+      - name: notify email
+        run: echo "build run status"
